@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#0f172a"/>
+  <!-- License Card Outline -->
+  <rect x="10" y="14" width="44" height="30" rx="4" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5"/>
+  <!-- Card Header Strip -->
+  <rect x="10" y="14" width="44" height="8" rx="4" fill="#f59e0b"/>
+  <!-- Photo placeholder -->
+  <rect x="15" y="26" width="10" height="13" rx="2" fill="#334155"/>
+  <!-- Text lines -->
+  <rect x="29" y="27" width="20" height="3" rx="1.5" fill="#f8fafc"/>
+  <rect x="29" y="33" width="15" height="2.5" rx="1.25" fill="#94a3b8"/>
+  <rect x="29" y="38" width="10" height="2" rx="1" fill="#64748b"/>
+  <!-- Exchange / Sync badge in corner -->
+  <circle cx="48" cy="46" r="11" fill="#10b981" stroke="#0f172a" stroke-width="2.5"/>
+  <path d="M44 46l3 3 6-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
