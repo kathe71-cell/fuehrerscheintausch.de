@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
-import { AlertTriangle, CheckCircle2, Clock, Info, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { AlertTriangle, CheckCircle2, Clock, Info, ArrowRight, Copy, Check } from 'lucide-react';
 import { PAPIER_STAFFELN, SCHECKKARTEN_STAFFELN } from '../data/fristenData';
 
 type LicenseType = 'papier' | 'scheckkarte' | 'neu';
 
 export const FristenRechner: React.FC = () => {
+  const [copiedShareLink, setCopiedShareLink] = useState(false);
+
+  useEffect(() => {
+    try {
+      const p = new URLSearchParams(window.location.search);
+      const typ = p.get('typ');
+      if (typ === 'papier' || typ === 'scheckkarte' || typ === 'neu') {
+        setLicenseType(typ);
+      }
+    } catch {}
+  }, []);
+
+  const shareFristLink = () => {
+    const url = `${window.location.origin}${window.location.pathname}?typ=${licenseType}`;
+    navigator.clipboard.writeText(url);
+    setCopiedShareLink(true);
+    setTimeout(() => setCopiedShareLink(false), 2500);
+  };
+
   const [licenseType, setLicenseType] = useState<LicenseType>('scheckkarte');
   const [selectedPapierIndex, setSelectedPapierIndex] = useState<number>(0);
   const [selectedScheckkarteIndex, setSelectedScheckkarteIndex] = useState<number>(0);
@@ -17,9 +36,19 @@ export const FristenRechner: React.FC = () => {
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden">
         {/* Header Ribbon */}
         <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-6 sm:p-8 text-white">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-wider mb-3">
-            <Clock className="w-3.5 h-3.5" />
-            Interaktiver Stufenplan-Rechner
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-wider">
+              <Clock className="w-3.5 h-3.5" />
+              Interaktiver Stufenplan-Rechner
+            </div>
+            <button
+              type="button"
+              onClick={shareFristLink}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 text-xs font-bold transition-all active:scale-95"
+            >
+              {copiedShareLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-amber-400" />}
+              <span>{copiedShareLink ? 'Link kopiert!' : 'Rechner-Link kopieren'}</span>
+            </button>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
             Führerschein umtauschen: Wann läuft Ihre Frist ab?
