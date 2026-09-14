@@ -68,10 +68,10 @@ export const Checkliste: React.FC = () => {
               Behördentermin-Vorbereitung
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-              Interaktive Unterlagen-Checkliste
+              Führerschein umtauschen: Unterlagen-Checkliste
             </h2>
             <p className="mt-1 text-sm text-slate-600">
-              Bringen Sie diese Unterlagen vollständig zum Umtauschtermin mit, um Verzögerungen zu vermeiden.
+              Welche Unterlagen werden benötigt, um den Führerschein umzutauschen? Bringen Sie diese Dokumente vollständig zum Behördentermin mit.
             </p>
           </div>
 

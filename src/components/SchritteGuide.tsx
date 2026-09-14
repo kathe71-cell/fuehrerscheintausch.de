@@ -40,10 +40,10 @@ export const SchritteGuide: React.FC = () => {
           Einfacher Leitfaden
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-          In 4 Schritten zum neuen EU-Kartenführerschein
+          Führerschein umtauschen: In 4 einfachen Schritten
         </h2>
         <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-          Keine Panik vor dem Behördengang: Der Pflichtumtausch ist für normale PKW- und Motorradfahrer ein reiner Verwaltungsakt ohne erneute Prüfungen.
+          So einfach können Sie Ihren Führerschein umtauschen: Für normale PKW- und Motorradfahrer ist der Pflichtumtausch ein reiner Verwaltungsakt ohne Fahrprüfung oder Gesundheitstests.
         </p>
       </div>
 

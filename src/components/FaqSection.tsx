@@ -17,10 +17,10 @@ export const FaqSection: React.FC = () => {
           Häufige Fragen
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-          Alles Wichtige zum Führerscheintausch im Überblick
+          FAQ: Häufige Fragen zum Führerschein umtauschen
         </h2>
         <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-          Verlässliche Antworten auf die häufigsten Rechts-, Gebühren- und Praxisfragen rund um den Umtausch nach der Fahrerlaubnis-Verordnung.
+          Verlässliche Antworten auf die wichtigsten Fragen: Wann muss ich meinen alten Führerschein umtauschen, welche Unterlagen sind nötig und welche Fristen gelten nach Anlage 8e FeV?
         </p>
       </div>
 

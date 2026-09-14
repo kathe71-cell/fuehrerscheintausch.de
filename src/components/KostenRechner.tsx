@@ -23,10 +23,10 @@ export const KostenRechner: React.FC = () => {
             Transparente Kostenübersicht
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            Was kostet der Führerschein-Pflichtumtausch?
+            Führerschein umtauschen: Was kostet der Umtausch?
           </h2>
           <p className="mt-1 text-sm text-slate-600 leading-relaxed">
-            Die behördlichen Grundgebühren sind bundesweit geregelt. Berechnen Sie hier die voraussichtlichen Gesamtkosten inklusive optionaler Zusatzleistungen wie Direktversand oder Express-Herstellung.
+            Was kostet es, den alten Führerschein umzutauschen? Die behördlichen Grundgebühren richten sich nach der GebOSt. Berechnen Sie hier die Gesamtkosten inklusive Passbild und Zusatzoptionen.
           </p>
         </div>
 

@@ -102,14 +102,14 @@ export const App: React.FC = () => {
                 {/* Hero Title & Pitch */}
                 <div className="text-center max-w-4xl mx-auto">
                   <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.1]">
-                    Führerschein-Pflichtumtausch in Deutschland: <br className="hidden sm:inline" />
+                    Führerschein umtauschen: <br className="hidden sm:inline" />
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-amber-700">
-                      Fristen, Rechner & Unterlagen
+                      Fristen, Rechner &amp; Unterlagen 2026
                     </span>
                   </h1>
 
                   <p className="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                    Ermitteln Sie in wenigen Sekunden Ihre verbindliche Umtauschfrist, berechnen Sie die amtlichen Kosten und prüfen Sie Ihre Unterlagen mit unserer interaktiven Checkliste.
+                    Wann müssen Sie Ihren alten Führerschein umtauschen? Ermitteln Sie in wenigen Sekunden Ihre verbindliche Umtauschfrist nach Anlage 8e FeV, berechnen Sie die amtlichen Kosten und nutzen Sie die Checkliste für den Termin.
                   </p>
 
                   {/* Primary & Secondary Action */}

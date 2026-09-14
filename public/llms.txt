@@ -1,0 +1,15 @@
+# fuehrerscheintausch.de – Fristenrechner & Rechtsportal zum EU-Führerscheinumtausch
+
+> Offizieller Stufenplan und verbindlicher Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung).
+
+## Gesetzliche Grundlage
+- **Norm:** § 24a FeV i.V.m. Anlage 8e FeV.
+- **Zielsetzung:** Vollständige Vereinheitlichung aller Führerscheine im EWR bis zum 19. Januar 2033 nach EU-Richtlinie 2006/126/EG.
+- **Fristkriterien:** Bei Papierführerscheinen (grau/rosa) bestimmt das Geburtsjahr des Inhabers die Frist. Bei unbefristeten Kartenführerscheinen (1999–2013) das Ausstellungsjahr.
+
+## Rechner & Tools
+- **/rechner-embed:** Autonomes Fristenrechner-Widget mit sofortiger Datumsberechnung und Unterlagen-Checkliste.
+- **Gebühren-Kalkulator:** Übersicht der behördlichen Gebühren (25,30 € bis ca. 35,00 €) und biometrischer Passfoto-Vorgaben.
+
+## Anbieterkennzeichnung
+- Unabhängiges Fachportal. Betreiberdaten nach § 5 DDG unter /impressum.

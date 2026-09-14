@@ -22,10 +22,10 @@ export const FristenRechner: React.FC = () => {
             Interaktiver Stufenplan-Rechner
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Wann läuft Ihre persönliche Umtauschfrist ab?
+            Führerschein umtauschen: Wann läuft Ihre Frist ab?
           </h2>
           <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Wählen Sie Ihren Führerscheintyp und Ihr Geburts- oder Ausstellungsjahr. Das Tool ermittelt die exakte Frist nach Anlage 8e FeV.
+            Wählen Sie Ihren Führerscheintyp und Ihr Geburts- oder Ausstellungsjahr. Der Fristenrechner ermittelt sofort, bis wann Sie Ihren alten Führerschein umtauschen müssen (Anlage 8e FeV).
           </p>
         </div>
 

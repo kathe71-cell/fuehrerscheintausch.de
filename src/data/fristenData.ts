@@ -143,5 +143,13 @@ export const FAQS = [
   {
     question: "Welche Unterlagen muss ich zum Termin mitbringen?",
     answer: "Sie benötigen: 1. Ihren gültigen Personalausweis oder Reisepass (mit aktueller Meldebescheinigung), 2. Ihren bisherigen Original-Führerschein, 3. Ein aktuelles biometrisches Passfoto (35 x 45 mm, Frontalaufnahme) und 4. Ggf. die vorab angeforderte Karteikartenabschrift, falls der Ausstellungsort von Ihrem heutigen Wohnort abweicht."
+  },
+  {
+    question: "Wo kann ich meinen Führerschein umtauschen?",
+    answer: "Zuständig für den Umtausch ist die Fahrerlaubnisbehörde (Führerscheinstelle) oder das Bürgeramt Ihres aktuellen Hauptwohnsitzes. Dies gilt unabhängig davon, wo Sie Ihre Führerscheinprüfung damals abgelegt oder wo Sie den ursprünglichen Führerschein erhalten haben."
+  },
+  {
+    question: "Kann ich den Führerschein online umtauschen?",
+    answer: "In vielen Städten und Landkreisen in Deutschland wird mittlerweile ein digitaler Führerschein-Umtausch über das behördliche Serviceportal angeboten (oft unter Nutzung der Online-Ausweisfunktion des Personalausweises / eID). Prüfen Sie vorab die Website Ihrer lokalen Fahrerlaubnisbehörde."
   }
 ];

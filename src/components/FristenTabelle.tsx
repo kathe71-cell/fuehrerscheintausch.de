@@ -13,10 +13,10 @@ export const FristenTabelle: React.FC = () => {
           Bundesweiter Stufenplan
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-          Vollständige Fristen-Matrix (Anlage 8e FeV)
+          Führerschein umtauschen: Stufenplan &amp; Fristen-Matrix (FeV)
         </h2>
         <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-          Um die Behörden vor Überlastung zu schützen, erfolgt der Umtausch schrittweise in zwei großen Blöcken: Zunächst nach Geburtsjahrgang, anschließend nach Ausstellungsjahr.
+          Bis wann müssen Sie Ihren Führerschein umtauschen? Um die Behörden vor Überlastung zu schützen, erfolgt der Umtausch gestaffelt nach Geburtsjahrgang bzw. Ausstellungsjahr.
         </p>
       </div>
 
