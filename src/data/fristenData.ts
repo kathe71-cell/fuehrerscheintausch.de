@@ -14,102 +14,133 @@ export interface ScheckkartenStaffel {
   hinweis: string;
 }
 
-export const PAPIER_STAFFELN: PapierStaffel[] = [
+// Dynamische Ermittlung des Frist-Status basierend auf dem aktuellen Datum
+export function calculateStaffelStatus(fristDateStr: string, allFristDates: string[]): 'abgelaufen' | 'aktuell' | 'zukunft' {
+  const now = new Date();
+  // Reset time to start of day for clean date comparison
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const frist = new Date(fristDateStr);
+
+  if (today > frist) {
+    return 'abgelaufen';
+  }
+
+  // Find the earliest upcoming deadline
+  const upcomingDates = allFristDates
+    .map(d => new Date(d))
+    .filter(d => d >= today)
+    .sort((a, b) => a.getTime() - b.getTime());
+
+  if (upcomingDates.length > 0 && frist.getTime() === upcomingDates[0].getTime()) {
+    return 'aktuell';
+  }
+
+  return 'zukunft';
+}
+
+const RAW_PAPIER_STAFFELN: Omit<PapierStaffel, 'status'>[] = [
   {
     geburtsjahr: 'Vor 1953',
     frist: '19. Januar 2033',
     fristDate: '2033-01-19',
-    status: 'zukunft',
-    hinweis: 'Sonderregelung: Senioren vor 1953 haben die längste Frist, um unnötigen Aufwand zu ersparen.'
+    hinweis: 'Sonderregelung nach Anlage 8e FeV: Senioren mit Geburtsjahr vor 1953 haben die längste Frist bis 2033.'
   },
   {
     geburtsjahr: '1953 – 1958',
     frist: '19. Juli 2022',
     fristDate: '2022-07-19',
-    status: 'abgelaufen',
     hinweis: 'Frist ist bereits abgelaufen. Bei Fahrten droht ein Verwarngeld von 10 €.'
   },
   {
     geburtsjahr: '1959 – 1964',
     frist: '19. Januar 2023',
     fristDate: '2023-01-19',
-    status: 'abgelaufen',
-    hinweis: 'Frist ist bereits abgelaufen. Tausch sollte zeitnah nachgeholt werden.'
+    hinweis: 'Frist ist bereits abgelaufen. Der Umtausch sollte zeitnah bei der Fahrerlaubnisbehörde nachgeholt werden.'
   },
   {
     geburtsjahr: '1965 – 1970',
     frist: '19. Januar 2024',
     fristDate: '2024-01-19',
-    status: 'abgelaufen',
-    hinweis: 'Frist ist bereits abgelaufen. Dokument ist ungültig.'
+    hinweis: 'Frist ist bereits abgelaufen. Das Dokument selbst ist ungültig (Fahrerlaubnis bleibt bestehen).'
   },
   {
     geburtsjahr: '1971 oder später',
     frist: '19. Januar 2025',
     fristDate: '2025-01-19',
-    status: 'abgelaufen',
-    hinweis: 'Frist endete im Januar 2025. Unbedingt schnellstmöglich umtauschen!'
+    hinweis: 'Frist endete im Januar 2025. Bitte schnellstmöglich umtauschen!'
   }
 ];
 
-export const SCHECKKARTEN_STAFFELN: ScheckkartenStaffel[] = [
+const RAW_SCHECKKARTEN_STAFFELN: Omit<ScheckkartenStaffel, 'status'>[] = [
   {
     ausstellungsjahr: '1999 – 2001',
     frist: '19. Januar 2026',
     fristDate: '2026-01-19',
-    status: 'aktuell',
-    hinweis: 'Nächste zentrale Frist! Frühzeitig Termin bei der Fahrerlaubnisbehörde buchen.'
+    hinweis: 'Frist ist am 19. Januar 2026 abgelaufen. Bitte umgehend Termin zur Neuausstellung vereinbaren.'
   },
   {
     ausstellungsjahr: '2002 – 2004',
     frist: '19. Januar 2027',
     fristDate: '2027-01-19',
-    status: 'zukunft',
-    hinweis: 'Umtausch ab Mitte 2026 empfohlen, um Engpässe zu vermeiden.'
+    hinweis: 'Nächste reguläre Umtauschstaffel! Jetzt frühzeitig Termin bei der Fahrerlaubnisbehörde buchen.'
   },
   {
     ausstellungsjahr: '2005 – 2007',
     frist: '19. Januar 2028',
     fristDate: '2028-01-19',
-    status: 'zukunft',
-    hinweis: 'Frist läuft bis Anfang 2028.'
+    hinweis: 'Umtauschfrist läuft bis Januar 2028.'
   },
   {
     ausstellungsjahr: '2008',
     frist: '19. Januar 2029',
     fristDate: '2029-01-19',
-    status: 'zukunft',
-    hinweis: 'Reguläre Umtauschstaffel.'
+    hinweis: 'Reguläre Umtauschstaffel bis Januar 2029.'
   },
   {
     ausstellungsjahr: '2009',
     frist: '19. Januar 2030',
     fristDate: '2030-01-19',
-    status: 'zukunft',
-    hinweis: 'Reguläre Umtauschstaffel.'
+    hinweis: 'Reguläre Umtauschstaffel bis Januar 2030.'
   },
   {
     ausstellungsjahr: '2010',
     frist: '19. Januar 2031',
     fristDate: '2031-01-19',
-    status: 'zukunft',
-    hinweis: 'Reguläre Umtauschstaffel.'
+    hinweis: 'Reguläre Umtauschstaffel bis Januar 2031.'
   },
   {
     ausstellungsjahr: '2011',
     frist: '19. Januar 2032',
     fristDate: '2032-01-19',
-    status: 'zukunft',
-    hinweis: 'Reguläre Umtauschstaffel.'
+    hinweis: 'Reguläre Umtauschstaffel bis Januar 2032.'
   },
   {
     ausstellungsjahr: '2012 – 18.01.2013',
     frist: '19. Januar 2033',
     fristDate: '2033-01-19',
-    status: 'zukunft',
-    hinweis: 'Letzte Staffel des bundesweiten Stufenplans.'
+    hinweis: 'Letzte Staffel des bundesweiten Stufenplans (Anlage 8e FeV).'
   }
 ];
+
+// Helper to get dynamically status-evaluated staffeln
+export function getPapierStaffeln(): PapierStaffel[] {
+  const dates = RAW_PAPIER_STAFFELN.map(s => s.fristDate);
+  return RAW_PAPIER_STAFFELN.map(s => ({
+    ...s,
+    status: calculateStaffelStatus(s.fristDate, dates)
+  }));
+}
+
+export function getScheckkartenStaffeln(): ScheckkartenStaffel[] {
+  const dates = RAW_SCHECKKARTEN_STAFFELN.map(s => s.fristDate);
+  return RAW_SCHECKKARTEN_STAFFELN.map(s => ({
+    ...s,
+    status: calculateStaffelStatus(s.fristDate, dates)
+  }));
+}
+
+export const PAPIER_STAFFELN: PapierStaffel[] = getPapierStaffeln();
+export const SCHECKKARTEN_STAFFELN: ScheckkartenStaffel[] = getScheckkartenStaffeln();
 
 export const FAQS = [
   {

@@ -42,6 +42,7 @@ const CHECKLIST_ITEMS: CheckItem[] = [
 
 export const Checkliste: React.FC = () => {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const [karteikarteNotRequired, setKarteikarteNotRequired] = useState<boolean>(false);
 
   const toggleItem = (id: string) => {
     setCheckedItems(prev => ({
@@ -50,8 +51,17 @@ export const Checkliste: React.FC = () => {
     }));
   };
 
-  const completedCount = Object.values(checkedItems).filter(Boolean).length;
-  const progressPercent = Math.round((completedCount / CHECKLIST_ITEMS.length) * 100);
+  // If karteikartenabschrift is marked as not required, only the 3 core items are needed
+  const activeItems = CHECKLIST_ITEMS.filter(item => {
+    if (item.id === 'karteikarte' && karteikarteNotRequired) {
+      return false;
+    }
+    return true;
+  });
+
+  const totalCount = activeItems.length;
+  const completedCount = activeItems.filter(item => !!checkedItems[item.id]).length;
+  const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 100;
 
   const handlePrint = () => {
     window.print();
@@ -90,7 +100,12 @@ export const Checkliste: React.FC = () => {
         <div className="my-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
           <div className="flex items-center justify-between text-xs font-bold text-slate-700 mb-2">
             <span>Ihr Vorbereitungsstatus</span>
-            <span>{completedCount} von {CHECKLIST_ITEMS.length} Unterlagen bereit ({progressPercent}%)</span>
+            <span>
+              {completedCount} von {totalCount} Unterlagen bereit ({progressPercent}%)
+              {karteikarteNotRequired && (
+                <span className="text-slate-500 font-normal ml-1.5">(Karteikartenabschrift entfällt)</span>
+              )}
+            </span>
           </div>
           <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
             <div
@@ -104,12 +119,16 @@ export const Checkliste: React.FC = () => {
         <div className="space-y-4">
           {CHECKLIST_ITEMS.map((item) => {
             const isChecked = !!checkedItems[item.id];
+            const isKarteikarte = item.id === 'karteikarte';
+            const isExempt = isKarteikarte && karteikarteNotRequired;
+
             return (
               <div
                 key={item.id}
-                onClick={() => toggleItem(item.id)}
-                className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                  isChecked
+                className={`p-4 rounded-xl border-2 transition-all ${
+                  isExempt
+                    ? 'border-slate-200 bg-slate-50/70 opacity-80'
+                    : isChecked
                     ? 'border-emerald-500 bg-emerald-50/40'
                     : 'border-slate-200 hover:border-slate-300 bg-white'
                 }`}
@@ -117,8 +136,14 @@ export const Checkliste: React.FC = () => {
                 <div className="flex items-start gap-3.5">
                   <button
                     type="button"
-                    aria-label={isChecked ? 'Abgewählt' : 'Ausgewählt'}
-                    className="mt-0.5 text-emerald-600 shrink-0"
+                    role="checkbox"
+                    aria-checked={isChecked}
+                    aria-label={`${item.title}: ${isChecked ? 'Erledigt' : 'Noch nicht erledigt'}`}
+                    onClick={() => {
+                      if (!isExempt) toggleItem(item.id);
+                    }}
+                    disabled={isExempt}
+                    className="mt-0.5 text-emerald-600 shrink-0 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded"
                   >
                     {isChecked ? (
                       <CheckSquare className="w-5 h-5 text-emerald-600" />
@@ -128,11 +153,21 @@ export const Checkliste: React.FC = () => {
                   </button>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className={`text-sm sm:text-base font-bold ${
-                        isChecked ? 'text-emerald-950 line-through' : 'text-slate-900'
-                      }`}>
+                      <h3
+                        onClick={() => {
+                          if (!isExempt) toggleItem(item.id);
+                        }}
+                        className={`text-sm sm:text-base font-bold cursor-pointer select-none ${
+                          isExempt 
+                            ? 'text-slate-500 line-through' 
+                            : isChecked 
+                            ? 'text-emerald-950 line-through' 
+                            : 'text-slate-900'
+                        }`}
+                      >
                         {item.title}
                       </h3>
+
                       {item.required ? (
                         <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold">
                           Pflichtdokument
@@ -142,12 +177,45 @@ export const Checkliste: React.FC = () => {
                           Nur bei Behördenwechsel
                         </span>
                       )}
+
+                      {isExempt && (
+                        <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">
+                          ✓ Nicht erforderlich (kein Behördenwechsel)
+                        </span>
+                      )}
                     </div>
+
                     <p className="text-xs text-slate-600 mt-1 font-medium">{item.description}</p>
+                    
                     <p className="text-xs text-slate-500 mt-2 bg-slate-50/80 p-2.5 rounded-lg border border-slate-100 leading-relaxed">
                       <Info className="w-3.5 h-3.5 text-slate-400 inline-block mr-1.5 -mt-0.5" />
                       {item.detail}
                     </p>
+
+                    {/* Spezielle Auswahl für Karteikartenabschrift */}
+                    {isKarteikarte && (
+                      <div className="mt-3 pt-3 border-t border-slate-200/80 flex flex-wrap items-center gap-2 text-xs">
+                        <span className="font-semibold text-slate-700">Wohnort-Prüfung:</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setKarteikarteNotRequired(prev => !prev);
+                            if (!karteikarteNotRequired) {
+                              setCheckedItems(prev => ({ ...prev, karteikarte: false }));
+                            }
+                          }}
+                          className={`px-3 py-1 rounded-lg border font-bold text-[11px] transition-all ${
+                            karteikarteNotRequired
+                              ? 'bg-slate-900 text-white border-slate-900'
+                              : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                          }`}
+                        >
+                          {karteikarteNotRequired
+                            ? '✓ Führerschein wurde am aktuellen Wohnort ausgestellt (Nicht erforderlich)'
+                            : 'Wurde der Führerschein am aktuellen Wohnort ausgestellt? (Hier klicken zum Abwählen)'}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -166,22 +234,22 @@ export const Checkliste: React.FC = () => {
                 Sie benötigen noch ein biometrisches Passbild?
               </h4>
               <p className="text-xs text-slate-600 mt-0.5">
-                Sparen Sie sich teure Fotografentermine: Nutzen Sie zertifizierte Foto-Apps oder Fotostationen direkt vor Ihrem Bürgeramt-Termin.
+                Passfotos müssen den ICAO-Biometriekriterien entsprechen (35 x 45 mm). Sie erhalten passende Fotos beim Fotografen vor Ort, an Fototerminals im Bürgeramt (~6–10 €) oder über zertifizierte Passbild-Apps.
               </p>
             </div>
           </div>
           <a
-            href="https://www.google.com/search?q=biometrisches+passbild+app+generator"
+            href="https://www.google.com/search?q=biometrisches+passbild+fotograf+oder+app"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shrink-0 flex items-center gap-1.5 shadow-sm"
           >
-            <span>Passbild-Services vergleichen</span>
+            <span>Passbild-Dienste suchen (Google Suche)</span>
             <ExternalLink className="w-3 h-3 text-amber-400" />
           </a>
         </div>
         <div className="mt-2 text-[10px] text-slate-500 text-right">
-          * Werbelink / Partnerlink: Unabhängige Empfehlungen zur schnellen Terminvorbereitung.
+          * Externer Suchlink zur Information über lokale Fotodienstleister und zertifizierte Passfoto-Generatoren.
         </div>
       </div>
     </div>

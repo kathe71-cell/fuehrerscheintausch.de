@@ -93,7 +93,7 @@ export const App: React.FC = () => {
                 <div className="flex justify-center mb-6">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-800">
                     <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
-                    <span>Nächste Umtauschstaffel 2026: Scheckkarten 1999–2001</span>
+                    <span>Nächste reguläre Staffel: Scheckkarten 2002–2004 (Frist: 19.01.2027)</span>
                     <span className="text-slate-300">|</span>
                     <span className="text-amber-700 font-bold">Anlage 8e FeV</span>
                   </div>
@@ -109,7 +109,7 @@ export const App: React.FC = () => {
                   </h1>
 
                   <p className="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                    Wann müssen Sie Ihren alten Führerschein umtauschen? Ermitteln Sie in wenigen Sekunden Ihre verbindliche Umtauschfrist nach Anlage 8e FeV, berechnen Sie die amtlichen Kosten und nutzen Sie die Checkliste für den Termin.
+                    Wann müssen Sie Ihren alten Führerschein umtauschen? Ermitteln Sie in wenigen Sekunden Ihre Umtauschfrist nach Ihren Angaben (Anlage 8e FeV), berechnen Sie die amtlichen Kosten und nutzen Sie die Checkliste für den Termin.
                   </p>
 
                   {/* Primary & Secondary Action */}

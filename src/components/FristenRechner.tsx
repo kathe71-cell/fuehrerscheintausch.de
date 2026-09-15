@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AlertTriangle, CheckCircle2, Clock, Info, ArrowRight, Copy, Check } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Clock, Info, ArrowRight, Copy, Check, ExternalLink } from 'lucide-react';
 import { PAPIER_STAFFELN, SCHECKKARTEN_STAFFELN } from '../data/fristenData';
 
 type LicenseType = 'papier' | 'scheckkarte' | 'neu';
@@ -27,6 +27,7 @@ export const FristenRechner: React.FC = () => {
   const [licenseType, setLicenseType] = useState<LicenseType>('scheckkarte');
   const [selectedPapierIndex, setSelectedPapierIndex] = useState<number>(0);
   const [selectedScheckkarteIndex, setSelectedScheckkarteIndex] = useState<number>(0);
+  const [scheckkarteBornBefore1953, setScheckkarteBornBefore1953] = useState<boolean>(false);
 
   const activePapier = PAPIER_STAFFELN[selectedPapierIndex];
   const activeScheckkarte = SCHECKKARTEN_STAFFELN[selectedScheckkarteIndex];
@@ -54,7 +55,7 @@ export const FristenRechner: React.FC = () => {
             Führerschein umtauschen: Wann läuft Ihre Frist ab?
           </h2>
           <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Wählen Sie Ihren Führerscheintyp und Ihr Geburts- oder Ausstellungsjahr. Der Fristenrechner ermittelt sofort, bis wann Sie Ihren alten Führerschein umtauschen müssen (Anlage 8e FeV).
+            Wählen Sie Ihren Führerscheintyp und Ihr Geburts- oder Ausstellungsjahr. Der Fristenrechner ermittelt sofort Ihre Umtauschfrist nach Ihren Angaben (Anlage 8e FeV).
           </p>
         </div>
 
@@ -211,67 +212,168 @@ export const FristenRechner: React.FC = () => {
 
           {licenseType === 'scheckkarte' && (
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
-                Schritt 2: Ausstellungsjahr des Kartenführerscheins (siehe Feld 4a)
-              </label>
-              <select
-                value={selectedScheckkarteIndex}
-                onChange={(e) => setSelectedScheckkarteIndex(Number(e.target.value))}
-                className="w-full sm:w-80 px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-bold text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500 shadow-sm mb-6"
-              >
-                {SCHECKKARTEN_STAFFELN.map((s, idx) => (
-                  <option key={idx} value={idx}>
-                    Ausgestellt: {s.ausstellungsjahr}
-                  </option>
-                ))}
-              </select>
+              {/* Frage: Vor 1953 geboren? (Anlage 8e Satz 3 FeV) */}
+              <div className="mb-6 p-4 rounded-xl border border-slate-200 bg-slate-50/80">
+                <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                  Schritt 2: Sind Sie vor 1953 geboren? (Geburtsjahrgang bis 1952)
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setScheckkarteBornBefore1953(false)}
+                    className={`py-2.5 px-4 rounded-xl text-xs font-bold border-2 transition-all text-left flex items-center justify-between ${
+                      !scheckkarteBornBefore1953
+                        ? 'bg-white border-slate-900 text-slate-950 shadow-xs'
+                        : 'bg-white/60 border-slate-200 text-slate-600 hover:bg-white'
+                    }`}
+                  >
+                    <span>Nein, Jahrgang 1953 oder später</span>
+                    {!scheckkarteBornBefore1953 && <CheckCircle2 className="w-4 h-4 text-slate-900" />}
+                  </button>
 
-              {/* Dynamic Result Card */}
-              <div className={`rounded-2xl p-6 border ${
-                activeScheckkarte.status === 'aktuell'
-                  ? 'bg-amber-50/70 border-amber-300 ring-2 ring-amber-400/20'
-                  : 'bg-emerald-50/70 border-emerald-200'
-              }`}>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/60">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      {activeScheckkarte.status === 'aktuell' ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs border border-amber-500">
-                          <Clock className="w-3.5 h-3.5 text-slate-950" />
-                          Nächste Umtauschstaffel 2026
-                        </span>
-                      ) : (
+                  <button
+                    type="button"
+                    onClick={() => setScheckkarteBornBefore1953(true)}
+                    className={`py-2.5 px-4 rounded-xl text-xs font-bold border-2 transition-all text-left flex items-center justify-between ${
+                      scheckkarteBornBefore1953
+                        ? 'bg-amber-50 border-amber-500 text-amber-950 shadow-xs ring-2 ring-amber-400/20'
+                        : 'bg-white/60 border-slate-200 text-slate-600 hover:bg-white'
+                    }`}
+                  >
+                    <span>Ja, vor 1953 geboren (Altersausnahme)</span>
+                    {scheckkarteBornBefore1953 && <CheckCircle2 className="w-4 h-4 text-amber-600" />}
+                  </button>
+                </div>
+                <p className="text-[11px] text-slate-500 mt-2">
+                  Gesetzliche Sonderregelung nach Anlage 8e FeV: Für alle vor 1953 Geborenen gilt stets die Frist 19.01.2033 – unabhängig vom Ausstellungsjahr.
+                </p>
+              </div>
+
+              {/* Wenn nicht vor 1953 geboren: Ausstellungsjahr Feld 4a abfragen */}
+              {!scheckkarteBornBefore1953 && (
+                <div className="mb-6">
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                    Schritt 3: Ausstellungsjahr des Kartenführerscheins (siehe Feld 4a)
+                  </label>
+                  <select
+                    value={selectedScheckkarteIndex}
+                    onChange={(e) => setSelectedScheckkarteIndex(Number(e.target.value))}
+                    className="w-full sm:w-80 px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-bold text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500 shadow-sm"
+                  >
+                    {SCHECKKARTEN_STAFFELN.map((s, idx) => (
+                      <option key={idx} value={idx}>
+                        Ausgestellt: {s.ausstellungsjahr}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {/* Dynamic Result Card for Scheckkarte */}
+              {scheckkarteBornBefore1953 ? (
+                /* Sonderfall: Vor 1953 geboren */
+                <div className="rounded-2xl p-6 border bg-emerald-50/70 border-emerald-200">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/60">
+                    <div>
+                      <div className="flex items-center gap-2">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 font-black text-xs border border-emerald-300">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                          Gültig bis {activeScheckkarte.frist}
+                          Gültig bis 2033 (Sonderregelung FeV)
                         </span>
-                      )}
-                      <span className="text-xs text-slate-600 font-medium">Ausstellung: {activeScheckkarte.ausstellungsjahr}</span>
+                        <span className="text-xs text-slate-600 font-medium">Geburtsjahr: Vor 1953</span>
+                      </div>
+                      <div className="mt-2 text-2xl sm:text-3xl font-black text-slate-900">
+                        Fristdatum: 19. Januar 2033
+                      </div>
                     </div>
-                    <div className="mt-2 text-2xl sm:text-3xl font-black text-slate-900">
-                      Fristdatum: {activeScheckkarte.frist}
-                    </div>
+
+                    <a
+                      href="#checkliste"
+                      className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-2 shadow-sm shrink-0"
+                    >
+                      Unterlagen ansehen
+                      <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+                    </a>
                   </div>
 
-                  <a
-                    href="#checkliste"
-                    className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-sm shrink-0"
-                  >
-                    Unterlagen bereitstellen
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  <div className="pt-4 text-xs sm:text-sm text-slate-700 space-y-2">
+                    <p className="font-semibold text-slate-900 flex items-start gap-2">
+                      <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                      <span>
+                        Gesetzliche Sonderregelung nach Anlage 8e Satz 3 FeV: Fahrerlaubnisinhaber, deren Geburtsjahr vor 1953 liegt, müssen ihren Führerschein erst bis zum 19. Januar 2033 umtauschen – unabhängig vom Ausstellungsjahr des Dokuments.
+                      </span>
+                    </p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Sie haben daher noch ausreichend Zeit und müssen vor 2033 nicht tätig werden, sofern Sie nicht freiwillig vorzeitig tauschen möchten.
+                    </p>
+                  </div>
                 </div>
+              ) : (
+                /* Reguläre Auswertung nach Ausstellungsjahr */
+                <div className={`rounded-2xl p-6 border ${
+                  activeScheckkarte.status === 'abgelaufen'
+                    ? 'bg-rose-50/70 border-rose-200'
+                    : activeScheckkarte.status === 'aktuell'
+                    ? 'bg-amber-50/70 border-amber-300 ring-2 ring-amber-400/20'
+                    : 'bg-emerald-50/70 border-emerald-200'
+                }`}>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/60">
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {activeScheckkarte.status === 'abgelaufen' && (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-900 font-black text-xs border border-rose-300">
+                            <AlertTriangle className="w-3.5 h-3.5 text-rose-700" />
+                            Frist abgelaufen (19.01.2026)
+                          </span>
+                        )}
+                        {activeScheckkarte.status === 'aktuell' && (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs border border-amber-500">
+                            <Clock className="w-3.5 h-3.5 text-slate-950" />
+                            Nächste reguläre Umtauschstaffel (19.01.2027)
+                          </span>
+                        )}
+                        {activeScheckkarte.status === 'zukunft' && (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 font-black text-xs border border-emerald-300">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                            Gültig bis {activeScheckkarte.frist}
+                          </span>
+                        )}
+                        <span className="text-xs text-slate-600 font-medium">Ausstellung: {activeScheckkarte.ausstellungsjahr}</span>
+                      </div>
+                      <div className="mt-2 text-2xl sm:text-3xl font-black text-slate-900">
+                        Fristdatum: {activeScheckkarte.frist}
+                      </div>
+                    </div>
 
-                <div className="pt-4 text-xs sm:text-sm text-slate-700 space-y-2">
-                  <p className="font-semibold text-slate-900 flex items-start gap-2">
-                    <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <span>{activeScheckkarte.hinweis}</span>
-                  </p>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Tipp: Bei den Bürgerämtern und Fahrerlaubnisbehörden kommt es vor Stichtagen häufig zu mehrwöchigen Wartezeiten bei der Terminvergabe. Buchen Sie Ihren Termin rechtzeitig online.
-                  </p>
+                    <a
+                      href="#checkliste"
+                      className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-sm shrink-0"
+                    >
+                      Unterlagen bereitstellen
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+
+                  <div className="pt-4 text-xs sm:text-sm text-slate-700 space-y-2">
+                    <p className="font-semibold text-slate-900 flex items-start gap-2">
+                      <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                      <span>{activeScheckkarte.hinweis}</span>
+                    </p>
+
+                    {activeScheckkarte.status === 'abgelaufen' && (
+                      <div className="bg-white/80 p-3 rounded-lg border border-rose-100 text-xs text-slate-700 space-y-1">
+                        <p><strong>Wichtig bei abgelaufener Frist:</strong> Ihre Fahrerlaubnis erlischt nicht! Das Kartendokument selbst verliert jedoch seine Gültigkeit. Bei Verkehrskontrollen droht ein Verwarnungsgeld (10 €). Bitte vereinbaren Sie zeitnah einen Termin.</p>
+                      </div>
+                    )}
+
+                    {activeScheckkarte.status === 'aktuell' && (
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Tipp: Bei den Bürgerämtern und Fahrerlaubnisbehörden kommt es vor Stichtagen häufig zu mehrwöchigen Wartezeiten bei der Terminvergabe. Buchen Sie Ihren Termin rechtzeitig online.
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
@@ -289,9 +391,42 @@ export const FristenRechner: React.FC = () => {
             </div>
           )}
 
+          {/* Nächster praktischer Schritt: Behördentermin */}
+          <div className="mt-8 p-5 sm:p-6 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shadow-md">
+            <div>
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-500/30 text-[10px] font-extrabold uppercase tracking-wider mb-2">
+                Empfohlener nächster Schritt
+              </div>
+              <h3 className="text-base sm:text-lg font-black text-white">
+                Zuständige Fahrerlaubnisbehörde finden &amp; Termin buchen
+              </h3>
+              <p className="text-xs text-slate-300 mt-1 max-w-xl leading-relaxed">
+                Zuständig für Ihren Umtausch ist die Fahrerlaubnisbehörde (Führerscheinstelle) oder das Bürgeramt an Ihrem aktuellen Hauptwohnsitz. Nutzen Sie den behördlichen Suchdienst für direkte Online-Termine.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0 w-full sm:w-auto">
+              <a
+                href="https://verwaltung.bund.de/portal/DE/leistung/99108003010000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-sm group"
+              >
+                <span>Behörde &amp; Termin finden</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-950 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a
+                href="#checkliste"
+                className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-colors"
+              >
+                <span>Unterlagen prüfen</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+              </a>
+            </div>
+          </div>
+
           {/* Model Calculation & Legal Notice */}
           <div className="mt-6 pt-4 border-t border-slate-200 text-[11px] text-slate-600 flex items-center justify-between flex-wrap gap-2">
-            <span>* Modellrechnung nach amtlichen Stichtagen der Anlage 8e zu § 24a Abs. 2 FeV.</span>
+            <span>* Umtauschfrist nach Ihren Angaben gemäß Stichtagen der Anlage 8e zu § 24a Abs. 2 FeV.</span>
             <span className="font-semibold text-slate-700">Rechtlich verbindlich sind stets die behördlichen Festlegungen.</span>
           </div>
         </div>

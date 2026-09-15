@@ -1,6 +1,6 @@
 # fuehrerscheintausch.de – Fristenrechner & Rechtsportal zum EU-Führerscheinumtausch
 
-> Offizieller Stufenplan und verbindlicher Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung).
+> Unabhängiger Stufenplan und Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung).
 
 ## Gesetzliche Grundlage
 - **Norm:** § 24a FeV i.V.m. Anlage 8e FeV.

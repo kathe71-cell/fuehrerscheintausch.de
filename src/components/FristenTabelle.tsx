@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, FileText, CheckCircle, Clock } from 'lucide-react';
+import { Calendar, FileText, CheckCircle, Clock, AlertTriangle, Info } from 'lucide-react';
 import { PAPIER_STAFFELN, SCHECKKARTEN_STAFFELN } from '../data/fristenData';
 
 export const FristenTabelle: React.FC = () => {
@@ -64,6 +64,14 @@ export const FristenTabelle: React.FC = () => {
               </span>
             </div>
 
+            {/* Sonderregelung Box vor 1953 */}
+            <div className="bg-emerald-50/80 px-6 py-3.5 border-b border-emerald-100 flex items-start gap-2.5 text-xs text-emerald-950">
+              <Info className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+              <div>
+                <strong>Wichtige gesetzliche Altersausnahme:</strong> Fahrerlaubnisinhaber, deren Geburtsjahr <strong>vor 1953</strong> liegt, müssen ihren Führerschein erst bis zum <strong>19. Januar 2033</strong> umtauschen – vollkommen unabhängig vom Ausstellungsjahr des Kartenführerscheins (Anlage 8e Satz 3 FeV).
+              </div>
+            </div>
+
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
@@ -79,7 +87,11 @@ export const FristenTabelle: React.FC = () => {
                     <tr
                       key={idx}
                       className={`hover:bg-slate-50/80 transition-colors ${
-                        row.status === 'aktuell' ? 'bg-amber-50/50 font-medium' : ''
+                        row.status === 'aktuell'
+                          ? 'bg-amber-50/50 font-medium'
+                          : row.status === 'abgelaufen'
+                          ? 'bg-rose-50/30'
+                          : ''
                       }`}
                     >
                       <td className="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
@@ -90,10 +102,16 @@ export const FristenTabelle: React.FC = () => {
                         {row.frist}
                       </td>
                       <td className="py-4 px-6">
+                        {row.status === 'abgelaufen' && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200">
+                            <AlertTriangle className="w-3 h-3 text-rose-700" />
+                            Frist abgelaufen
+                          </span>
+                        )}
                         {row.status === 'aktuell' && (
                           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-400 text-slate-950 border border-amber-500">
                             <Clock className="w-3 h-3 text-slate-950" />
-                            Aktuelle Frist
+                            Nächste Frist (2027)
                           </span>
                         )}
                         {row.status === 'zukunft' && (
