@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fuehrerscheintausch.de/sitemap.xml
+Sitemap: https://www.fuehrerscheintausch.de/sitemap.xml

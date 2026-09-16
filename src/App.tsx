@@ -37,6 +37,16 @@ export const App: React.FC = () => {
         w.va('pageview', { route: currentPath });
       }
     }
+
+    // Dynamic Canonical URL update for GSC
+    const canonicalUrl = `https://www.fuehrerscheintausch.de${currentPath === '/' ? '/' : currentPath}`;
+    let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', canonicalUrl);
   }, [currentPath]);
 
   const navigate = (path: string) => {
@@ -46,7 +56,7 @@ export const App: React.FC = () => {
   };
 
   const copyEmbedCode = () => {
-    const code = `<iframe src="https://fuehrerscheintausch.de/rechner-embed" width="100%" height="680" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);" title="Führerschein Fristenrechner"></iframe>\n<p style="font-size:12px; color:#64748b; text-align:center;">Fristenrechner bereitgestellt von <a href="https://fuehrerscheintausch.de" target="_blank" rel="noopener" style="color:#b45309; text-decoration:underline;">fuehrerscheintausch.de</a></p>`;
+    const code = `<iframe src="https://www.fuehrerscheintausch.de/rechner-embed" width="100%" height="680" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);" title="Führerschein Fristenrechner"></iframe>\n<p style="font-size:12px; color:#64748b; text-align:center;">Fristenrechner bereitgestellt von <a href="https://www.fuehrerscheintausch.de" target="_blank" rel="noopener" style="color:#b45309; text-decoration:underline;">fuehrerscheintausch.de</a></p>`;
     navigator.clipboard.writeText(code);
     setCopiedEmbed(true);
     setTimeout(() => setCopiedEmbed(false), 2500);
