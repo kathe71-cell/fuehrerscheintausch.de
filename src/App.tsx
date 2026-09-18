@@ -17,8 +17,8 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { VercelAnalyticsDashboard } from './components/analytics/VercelAnalyticsDashboard';
 import { Shield, Clock, FileCheck, CheckCircle2, ArrowRight, Copy, Check, Code2, BookOpen } from 'lucide-react';
 
-export const App: React.FC = () => {
-  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname || '/');
+export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
+  const [currentPath, setCurrentPath] = useState<string>(initialPath || (typeof window !== 'undefined' ? window.location.pathname : '/'));
   const [copiedEmbed, setCopiedEmbed] = useState<boolean>(false);
 
   useEffect(() => {

@@ -2,8 +2,27 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import https from 'https';
+import os from 'os';
 
-const TOKEN = 'vca_7E0SbIrdq9BeoKSK7lS6TuIc1xfmae60kaCAzCtryoDtX888xt0hqjPy';
+function getVercelToken() {
+  try {
+    const authPath = path.join(os.homedir(), 'Library', 'Application Support', 'com.vercel.cli', 'auth.json');
+    if (fs.existsSync(authPath)) {
+      const data = JSON.parse(fs.readFileSync(authPath, 'utf8'));
+      if (data.token) return data.token;
+    }
+  } catch {}
+  try {
+    const altPath = path.join(os.homedir(), '.vercel', 'auth.json');
+    if (fs.existsSync(altPath)) {
+      const data = JSON.parse(fs.readFileSync(altPath, 'utf8'));
+      if (data.token) return data.token;
+    }
+  } catch {}
+  return 'vca_1MTeiBMVhVY0yFIoGG7gEWF4GoDyGkr3cal2zoXNs3tIy4EmKP0mOFfN';
+}
+
+const TOKEN = process.env.VERCEL_TOKEN || getVercelToken();
 const TEAM_ID = 'team_LeS342OoSSK3GbJuTTKRc6LF';
 const PROJECT_ID = 'prj_w0O9u1WZONZzAk3b35NvsqFZ9wYt';
 const PROJECT_NAME = 'fuehrerscheintausch.de';
