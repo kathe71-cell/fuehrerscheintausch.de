@@ -28,5 +28,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "fuehrerscheintausch.de"
+        }
+      ],
+      "destination": "https://www.fuehrerscheintausch.de/$1",
+      "permanent": true
+    }
   ]
 }
