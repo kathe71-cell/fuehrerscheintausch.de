@@ -58,7 +58,7 @@ export const Datenschutz: React.FC<DatenschutzProps> = ({ navigate }) => {
               <h2 className="text-base">3. Hosting und Server-Log-Dateien</h2>
             </div>
             <p className="mb-3">
-              Wir hosten diese Website bei der Vercel Inc. (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA). Beim Aufruf unserer Website erfasst der Webserver automatisch technische Informationen in sogenannten Server-Log-Dateien:
+              Wir hosten diese Website bei der Vercel Inc. (Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA). Beim Aufruf unserer Website erfasst der Webserver automatisch technische Informationen in sogenannten Server-Log-Dateien:
             </p>
             <ul className="list-disc pl-5 space-y-1 text-xs text-slate-600 mb-3">
               <li>Browsertyp und Browserversion</li>
@@ -76,10 +76,10 @@ export const Datenschutz: React.FC<DatenschutzProps> = ({ navigate }) => {
           <section>
             <div className="flex items-center gap-2 text-slate-900 font-bold mb-2">
               <Lock className="w-5 h-5 text-slate-700" />
-              <h2 className="text-base">4. Keine Tracking-Cookies & keine Werbe-Pixel</h2>
+              <h2 className="text-base">4. Cookies & Tracking</h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-600">
-              Auf <strong>fuehrerscheintausch.de</strong> kommen keine zustimmungspflichtigen Tracking-Cookies, Werbe-Pixel oder Web-Analyse-Tools wie Google Analytics zum Einsatz. Sie können sich vollkommen ungestört und ohne Verfolgung Ihres Surfverhaltens informieren.
+              Auf <strong>fuehrerscheintausch.de</strong> kommen keine zustimmungspflichtigen Tracking-Cookies oder Werbe-Pixel von Drittanbietern zum Einsatz. Vercel erhebt im Rahmen des Hostings technische Verbindungsdaten (Server-Log-Dateien), die keine individuelle Nutzerprofilierung ermöglichen.
             </p>
           </section>
 
