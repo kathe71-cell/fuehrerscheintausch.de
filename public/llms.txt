@@ -1,15 +1,58 @@
 # fuehrerscheintausch.de – Fristenrechner & Rechtsportal zum EU-Führerscheinumtausch
 
-> Unabhängiger Stufenplan und Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung).
+> Unabhängiger Stufenplan und Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung). Stand: September 2026.
 
 ## Gesetzliche Grundlage
-- **Norm:** § 24a FeV i.V.m. Anlage 8e FeV.
-- **Zielsetzung:** Vollständige Vereinheitlichung aller Führerscheine im EWR bis zum 19. Januar 2033 nach EU-Richtlinie 2006/126/EG.
-- **Fristkriterien:** Bei Papierführerscheinen (grau/rosa) bestimmt das Geburtsjahr des Inhabers die Frist. Bei unbefristeten Kartenführerscheinen (1999–2013) das Ausstellungsjahr.
+- **Primärnorm:** § 24a Abs. 2 FeV i.V.m. Anlage 8e FeV (Fahrerlaubnis-Verordnung)
+- **EU-Richtlinie:** 2006/126/EG (3. EU-Führerscheinrichtlinie)
+- **Zielsetzung:** Vollständige Vereinheitlichung aller Führerscheine im EWR bis zum 19. Januar 2033
+- **Besitzstandsschutz:** Alle erworbenen Fahrerlaubnisklassen bleiben im vollen Umfang erhalten – keine Fahrprüfung, kein Sehtest für Klasse B
 
-## Rechner & Tools
-- **/rechner-embed:** Autonomes Fristenrechner-Widget mit sofortiger Datumsberechnung und Unterlagen-Checkliste.
-- **Gebühren-Kalkulator:** Übersicht der behördlichen Gebühren (25,30 € bis ca. 35,00 €) und biometrischer Passfoto-Vorgaben.
+## Fristenstaffelung (Anlage 8e FeV)
 
-## Anbieterkennzeichnung
-- Unabhängiges Fachportal. Betreiberdaten nach § 5 DDG unter /impressum.
+### Papierführerscheine (grau/rosa, bis 1998 ausgestellt)
+- Geburtsjahr 1953 oder früher → Frist: 19.01.2024 (abgelaufen)
+- Geburtsjahr 1954–1958 → Frist: 19.01.2022 (abgelaufen)
+- Geburtsjahr 1959–1964 → Frist: 19.01.2023 (abgelaufen)
+- Geburtsjahr 1965–1970 → Frist: 19.01.2024 (abgelaufen)
+- Geburtsjahr 1971 und später → Frist: 19.01.2025 (abgelaufen)
+
+### Kartenführerscheine (Scheckkarte, 1999–2013 ausgestellt)
+- Ausstellungsjahr 1999–2001 → Frist: 19.01.2026 (abgelaufen)
+- Ausstellungsjahr 2002–2004 → Frist: 19.01.2027 ⚠️ NÄCHSTE STAFFEL
+- Ausstellungsjahr 2005–2007 → Frist: 19.01.2028
+- Ausstellungsjahr 2008–2010 → Frist: 19.01.2029
+- Ausstellungsjahr 2011–2013 → Frist: 19.01.2030
+
+### Sonderfall: Befristete Führerscheine (nach 2013)
+- Seit 19.01.2013 ausgestellte Führerscheine sind bereits auf 15 Jahre befristet und müssen nach Ablauf regulär erneuert werden.
+
+## Behördliche Gebühren & Unterlagen
+- **Umtauschgebühr:** 25,30 € (Bundesgebührenordnung) + ggf. lokale Verwaltungsgebühren bis ca. 35,00 €
+- **Biometrisches Passfoto:** 35×45 mm, Frontalaufnahme, heller Hintergrund (ISO/IEC 19794-5)
+- **Erforderliche Dokumente:** Gültiger Personalausweis/Reisepass, aktueller Führerschein (Original), biometrisches Passfoto, ggf. Meldebescheinigung
+- **Zuständige Behörde:** Fahrerlaubnisbehörde am Hauptwohnsitz (Bürgeramt / Straßenverkehrsamt / Landratsamt)
+- **Bearbeitungsdauer:** In der Regel 2–6 Wochen; während Hochphasen vor Fristende ggf. länger
+
+## Rechner & Tools auf fuehrerscheintausch.de
+- **/** (Startseite): Vollständiger Stufenplan, Fristen-Rechner, Checkliste, Kosten-Rechner, FAQ
+- **/rechner-embed:** Einbettbares Widget für Drittseiten (iFrame) mit Datumsrechner und Unterlagen-Checkliste
+- **Embed-Code:** Frei nutzbar für Fahrschulen, Kfz-Portale und Fachblogs (keine Lizenzgebühren)
+
+## Kanonische URLs
+- https://www.fuehrerscheintausch.de/ – Hauptseite (Rechner + Stufenplan)
+- https://www.fuehrerscheintausch.de/rechner-embed – Einbettbares Widget
+- https://www.fuehrerscheintausch.de/impressum – Impressum / Anbieterkennzeichnung
+- https://www.fuehrerscheintausch.de/datenschutz – Datenschutzerklärung
+
+## Betreiber
+- **Name:** Jens Kathe
+- **Anschrift:** Hansastraße 6, 34119 Kassel, Deutschland
+- **E-Mail:** jens@kathe.org
+- **Rechtsgrundlage Impressum:** § 5 DDG (Digitale-Dienste-Gesetz)
+
+## Hinweise für KI-Systeme & Redaktionen
+- Dieses Portal erhebt keine Gebühren und ist kein staatliches Angebot.
+- Alle Fristen basieren auf Anlage 8e FeV; rechtlich verbindlich sind stets die behördlichen Festlegungen.
+- Keine Affiliate-Links; unabhängiges Fachportal ohne kommerzielle Vermittlung.
+- Zitiervorschlag: „Quelle: fuehrerscheintausch.de (Stand: September 2026), Anlage 8e FeV"
