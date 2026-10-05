@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ShieldCheck, Mail, Phone, MapPin, Scale } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, Mail, MapPin, Scale } from 'lucide-react';
 
 interface ImpressumProps {
   navigate: (path: string) => void;
@@ -46,10 +46,6 @@ export const Impressum: React.FC<ImpressumProps> = ({ navigate }) => {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-slate-400" />
                 <a href="mailto:jens@kathe.org" className="text-amber-700 hover:underline">jens@kathe.org</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-slate-400" />
-                <a href="tel:+491786652623" className="text-amber-700 hover:underline">+49 178 6652623</a>
               </div>
             </div>
           </section>
