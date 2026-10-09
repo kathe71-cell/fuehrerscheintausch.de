@@ -9,6 +9,7 @@ import { SchritteGuide } from './components/SchritteGuide';
 import { FaqSection } from './components/FaqSection';
 import { StickyMobileBar } from './components/StickyMobileBar';
 import { Impressum } from './pages/Impressum';
+import ProjektuebernahmePage from './pages/ProjektuebernahmePage';
 import { Datenschutz } from './pages/Datenschutz';
 import { RechnerEmbed } from './pages/RechnerEmbed';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -87,7 +88,9 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
       <Navbar currentPath={currentPath} navigate={navigate} />
 
       <main className="flex-1">
-        {currentPath === '/impressum' ? (
+        {currentPath === '/projektuebernahme' ? (
+          <ProjektuebernahmePage />
+        ) : currentPath === '/impressum' ? (
           <Impressum navigate={navigate} />
         ) : currentPath === '/datenschutz' ? (
           <Datenschutz navigate={navigate} />
