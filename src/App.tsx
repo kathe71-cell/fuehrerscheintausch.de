@@ -12,6 +12,11 @@ import { Impressum } from './pages/Impressum';
 import ProjektuebernahmePage from './pages/ProjektuebernahmePage';
 import { Datenschutz } from './pages/Datenschutz';
 import { RechnerEmbed } from './pages/RechnerEmbed';
+import { RechnerPage } from './pages/RechnerPage';
+import { StufenplanPage } from './pages/StufenplanPage';
+import { ChecklistePage } from './pages/ChecklistePage';
+import { KostenPage } from './pages/KostenPage';
+import { FaqPage } from './pages/FaqPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -133,6 +138,16 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
           <Impressum navigate={navigate} />
         ) : currentPath === '/datenschutz' ? (
           <Datenschutz navigate={navigate} />
+        ) : currentPath === '/rechner' ? (
+          <RechnerPage navigate={navigate} />
+        ) : currentPath === '/stufenplan' ? (
+          <StufenplanPage navigate={navigate} />
+        ) : currentPath === '/checkliste' ? (
+          <ChecklistePage navigate={navigate} />
+        ) : currentPath === '/kosten' ? (
+          <KostenPage navigate={navigate} />
+        ) : currentPath === '/faq' ? (
+          <FaqPage navigate={navigate} />
         ) : (
           <div>
             {/* Hero Section */}

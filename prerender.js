@@ -30,6 +30,31 @@ const routesToPrerender = [
     desc: 'Informationen zur Verarbeitung personenbezogener Daten auf fuehrerscheintausch.de gemäß DSGVO.'
   },
   {
+    url: '/rechner',
+    title: 'Führerschein Fristenrechner 2026: Stichtag ermitteln | fuehrerscheintausch.de',
+    desc: 'Ermitteln Sie mit unserem interaktiven Fristenrechner Ihren genauen Umtauschstichtag nach Anlage 8e FeV für Papier- und Kartenführerscheine.'
+  },
+  {
+    url: '/stufenplan',
+    title: 'Führerschein Stufenplan: Fristen-Matrix nach FeV | fuehrerscheintausch.de',
+    desc: 'Bundesweiter Stufenplan für den Führerschein-Pflichtumtausch. Alle Fristen nach Geburtsjahr und Ausstellungsjahr gemäß Anlage 8e FeV im Überblick.'
+  },
+  {
+    url: '/checkliste',
+    title: 'Führerschein umtauschen: Unterlagen-Checkliste | fuehrerscheintausch.de',
+    desc: 'Welche Unterlagen benötigen Sie zum Führerscheinumtausch? Interaktive Checkliste mit Druckfunktion für Ausweis, Passbild und Karteikartenabschrift.'
+  },
+  {
+    url: '/kosten',
+    title: 'Führerschein umtauschen Kosten: Gebührenrechner | fuehrerscheintausch.de',
+    desc: 'Was kostet der Führerscheinumtausch? Amtliche Gebühren nach GebOSt, Passbildkosten sowie optionale Zusatzkosten transparent kalkulieren.'
+  },
+  {
+    url: '/faq',
+    title: 'FAQ: Häufige Fragen zum Führerschein umtauschen | fuehrerscheintausch.de',
+    desc: 'Antworten auf die 10 wichtigsten Fragen zum Führerschein-Pflichtumtausch: Fristen, Besitzstandsschutz, Bußgelder und Online-Antrag.'
+  },
+  {
     url: '/projektuebernahme',
     title: 'Projektübernahme | fuehrerscheintausch.de',
     desc: 'Informationen und Kontakt zur Übernahme des Projekts und der Domain fuehrerscheintausch.de.'

@@ -43,7 +43,12 @@
 - **/projektuebernahme:** Informationen zur Projektübernahme
 
 ## Kanonische URLs
-- https://www.fuehrerscheintausch.de/ – Hauptseite (Rechner + Stufenplan)
+- https://www.fuehrerscheintausch.de/ – Hauptseite (Gesamtübersicht & Stufenplan)
+- https://www.fuehrerscheintausch.de/rechner – Interaktiver Fristen-Rechner
+- https://www.fuehrerscheintausch.de/stufenplan – Stufenplan & Fristen-Matrix (FeV)
+- https://www.fuehrerscheintausch.de/checkliste – Unterlagen-Checkliste für den Termin
+- https://www.fuehrerscheintausch.de/kosten – Gebührenrechner & Kostenübersicht
+- https://www.fuehrerscheintausch.de/faq – Häufige Fragen & rechtliche Antworten
 - https://www.fuehrerscheintausch.de/rechner-embed – Einbettbares Widget
 - https://www.fuehrerscheintausch.de/impressum – Impressum / Anbieterkennzeichnung
 - https://www.fuehrerscheintausch.de/datenschutz – Datenschutzerklärung
