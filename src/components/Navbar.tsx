@@ -3,7 +3,7 @@ import { Shield, Clock, FileCheck, HelpCircle, Menu, X, Calendar } from 'lucide-
 
 interface NavbarProps {
   currentPath: string;
-  navigate: (path: string) => void;
+  navigate: (path: string, hash?: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
@@ -12,16 +12,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
   const handleNav = (path: string, hash?: string) => {
     setMobileMenuOpen(false);
     if (path !== currentPath) {
-      navigate(path);
-      if (hash) {
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+      navigate(path, hash);
     } else if (hash) {
       const el = document.getElementById(hash);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', `#${hash}`);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
     }
   };
 

@@ -6,7 +6,7 @@ export const FristenTabelle: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'scheckkarte' | 'papier'>('scheckkarte');
 
   return (
-    <div id="stufenplan" className="scroll-mt-20">
+    <div id="stufenplan" className="scroll-mt-24">
       <div className="text-center max-w-3xl mx-auto mb-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200/80 text-slate-800 text-xs font-bold uppercase tracking-wider mb-2">
           <Calendar className="w-3.5 h-3.5 text-amber-600" />

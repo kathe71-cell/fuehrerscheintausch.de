@@ -33,7 +33,7 @@ export const FristenRechner: React.FC = () => {
   const activeScheckkarte = SCHECKKARTEN_STAFFELN[selectedScheckkarteIndex];
 
   return (
-    <div id="rechner" className="scroll-mt-20">
+    <div id="rechner" className="scroll-mt-24">
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden">
         {/* Header Ribbon */}
         <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-6 sm:p-8 text-white">

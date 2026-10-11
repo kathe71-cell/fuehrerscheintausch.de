@@ -15,7 +15,7 @@ export const KostenRechner: React.FC = () => {
   const total = (baseFee + fotoFee + versandFee + expressFee).toFixed(2);
 
   return (
-    <div id="kosten" className="scroll-mt-20">
+    <div id="kosten" className="scroll-mt-24">
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 sm:p-8">
         <div className="max-w-3xl mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-2">

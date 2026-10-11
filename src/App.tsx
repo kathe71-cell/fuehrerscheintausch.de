@@ -50,10 +50,49 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
     link.setAttribute('href', canonicalUrl);
   }, [currentPath]);
 
-  const navigate = (path: string) => {
-    window.history.pushState({}, '', path);
+  useEffect(() => {
+    // Intercept all internal anchor link clicks to smoothly scroll target into viewport
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a');
+      if (!target) return;
+      const href = target.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1) {
+        const id = href.slice(1);
+        const element = document.getElementById(id);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.history.pushState(null, '', href);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
+  useEffect(() => {
+    if (currentPath === '/') {
+      const hash = typeof window !== 'undefined' ? window.location.hash.slice(1) : '';
+      if (hash) {
+        const timer = setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [currentPath]);
+
+  const navigate = (path: string, hash?: string) => {
+    const targetUrl = hash ? `${path}#${hash}` : path;
+    window.history.pushState({}, '', targetUrl);
     setCurrentPath(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const copyEmbedCode = () => {

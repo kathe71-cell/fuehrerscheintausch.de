@@ -34,7 +34,7 @@ export const SchritteGuide: React.FC = () => {
   ];
 
   return (
-    <div className="py-12">
+    <div id="schritte" className="scroll-mt-24 py-12">
       <div className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider mb-2">
           Einfacher Leitfaden

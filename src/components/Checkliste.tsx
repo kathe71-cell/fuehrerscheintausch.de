@@ -68,7 +68,7 @@ export const Checkliste: React.FC = () => {
   };
 
   return (
-    <div id="checkliste" className="scroll-mt-20">
+    <div id="checkliste" className="scroll-mt-24">
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 sm:p-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
