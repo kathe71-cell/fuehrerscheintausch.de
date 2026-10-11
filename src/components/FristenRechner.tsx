@@ -420,7 +420,7 @@ export const FristenRechner: React.FC = () => {
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0 w-full sm:w-auto">
               <a
-                href="https://verwaltung.bund.de/portal/DE/leistung/99108003010000"
+                href="https://verwaltung.bund.de/portal/DE"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-sm group"
