@@ -1,58 +1,61 @@
 # fuehrerscheintausch.de – Fristenrechner & Rechtsportal zum EU-Führerscheinumtausch
 
-> Unabhängiger Stufenplan und Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung). Stand: September 2026.
+> Unabhängiger Stufenplan und Fristenrechner nach Anlage 8e FeV (Fahrerlaubnis-Verordnung). Stand: Oktober 2026.
 
 ## Gesetzliche Grundlage
 - **Primärnorm:** § 24a Abs. 2 FeV i.V.m. Anlage 8e FeV (Fahrerlaubnis-Verordnung)
 - **EU-Richtlinie:** 2006/126/EG (3. EU-Führerscheinrichtlinie)
 - **Zielsetzung:** Vollständige Vereinheitlichung aller Führerscheine im EWR bis zum 19. Januar 2033
-- **Besitzstandsschutz:** Alle erworbenen Fahrerlaubnisklassen bleiben im vollen Umfang erhalten – keine Fahrprüfung, kein Sehtest für Klasse B
+- **Besitzstandsschutz:** Alle erworbenen Fahrerlaubnisklassen bleiben im vollen Umfang erhalten – keine Fahrprüfung, kein Sehtest für reguläre PKW- und Motorradklassen (B, A, alte Klasse 3)
 
 ## Fristenstaffelung (Anlage 8e FeV)
 
-### Papierführerscheine (grau/rosa, bis 1998 ausgestellt)
-- Geburtsjahr 1953 oder früher → Frist: 19.01.2024 (abgelaufen)
-- Geburtsjahr 1954–1958 → Frist: 19.01.2022 (abgelaufen)
+### Staffel I: Papierführerscheine (grau/rosa, bis 31.12.1998 ausgestellt)
+- Geburtsjahr vor 1953 (bis 1952) → Frist: 19.01.2033 (Altersausnahme nach Anlage 8e Satz 3 FeV)
+- Geburtsjahr 1953–1958 → Frist: 19.07.2022 (abgelaufen)
 - Geburtsjahr 1959–1964 → Frist: 19.01.2023 (abgelaufen)
 - Geburtsjahr 1965–1970 → Frist: 19.01.2024 (abgelaufen)
-- Geburtsjahr 1971 und später → Frist: 19.01.2025 (abgelaufen)
+- Geburtsjahr 1971 oder später → Frist: 19.01.2025 (abgelaufen)
 
-### Kartenführerscheine (Scheckkarte, 1999–2013 ausgestellt)
+### Staffel II: Kartenführerscheine (Scheckkarte, ohne Befristungsdatum in Feld 4b, ausgestellt 01.01.1999–18.01.2013)
+*Wichtig: Für alle vor 1953 Geborenen gilt auch bei Scheckkarten stets die Frist 19.01.2033.*
 - Ausstellungsjahr 1999–2001 → Frist: 19.01.2026 (abgelaufen)
-- Ausstellungsjahr 2002–2004 → Frist: 19.01.2027 ⚠️ NÄCHSTE STAFFEL
+- Ausstellungsjahr 2002–2004 → Frist: 19.01.2027 ⚠️ NÄCHSTE REGULÄRE STAFFEL
 - Ausstellungsjahr 2005–2007 → Frist: 19.01.2028
-- Ausstellungsjahr 2008–2010 → Frist: 19.01.2029
-- Ausstellungsjahr 2011–2013 → Frist: 19.01.2030
+- Ausstellungsjahr 2008 → Frist: 19.01.2029
+- Ausstellungsjahr 2009 → Frist: 19.01.2030
+- Ausstellungsjahr 2010 → Frist: 19.01.2031
+- Ausstellungsjahr 2011 → Frist: 19.01.2032
+- Ausstellungsjahr 2012–18.01.2013 → Frist: 19.01.2033
 
-### Sonderfall: Befristete Führerscheine (nach 2013)
-- Seit 19.01.2013 ausgestellte Führerscheine sind bereits auf 15 Jahre befristet und müssen nach Ablauf regulär erneuert werden.
+### Ab 19.01.2013 ausgestellte Führerscheine
+- Bereits mit regulärer 15-jähriger Gültigkeitsbefristung ausgestellt. Kein Stufenplan-Pflichtumtausch erforderlich, nur turnusmäßige Neuausstellung nach 15 Jahren.
 
 ## Behördliche Gebühren & Unterlagen
-- **Umtauschgebühr:** 25,30 € (Bundesgebührenordnung) + ggf. lokale Verwaltungsgebühren bis ca. 35,00 €
-- **Biometrisches Passfoto:** 35×45 mm, Frontalaufnahme, heller Hintergrund (ISO/IEC 19794-5)
-- **Erforderliche Dokumente:** Gültiger Personalausweis/Reisepass, aktueller Führerschein (Original), biometrisches Passfoto, ggf. Meldebescheinigung
-- **Zuständige Behörde:** Fahrerlaubnisbehörde am Hauptwohnsitz (Bürgeramt / Straßenverkehrsamt / Landratsamt)
-- **Bearbeitungsdauer:** In der Regel 2–6 Wochen; während Hochphasen vor Fristende ggf. länger
+- **Umtauschgebühr:** ca. 25,30 € bis 30,00 € nach GebOSt
+- **Biometrisches Passfoto:** 35×45 mm, Frontalaufnahme (ICAO-Standard)
+- **Erforderliche Dokumente:** Gültiger Personalausweis oder Reisepass (mit Meldebescheinigung), bisheriger Original-Führerschein, aktuelles biometrisches Passbild, ggf. Karteikartenabschrift der Erstbehörde (nur bei Behördenwechsel)
+- **Zuständige Behörde:** Fahrerlaubnisbehörde am Hauptwohnsitz (Bürgeramt / Führerscheinstelle)
 
 ## Rechner & Tools auf fuehrerscheintausch.de
 - **/** (Startseite): Vollständiger Stufenplan, Fristen-Rechner, Checkliste, Kosten-Rechner, FAQ
 - **/rechner-embed:** Einbettbares Widget für Drittseiten (iFrame) mit Datumsrechner und Unterlagen-Checkliste
-- **Embed-Code:** Frei nutzbar für Fahrschulen, Kfz-Portale und Fachblogs (keine Lizenzgebühren)
+- **/projektuebernahme:** Informationen zur Projektübernahme
 
 ## Kanonische URLs
 - https://www.fuehrerscheintausch.de/ – Hauptseite (Rechner + Stufenplan)
 - https://www.fuehrerscheintausch.de/rechner-embed – Einbettbares Widget
 - https://www.fuehrerscheintausch.de/impressum – Impressum / Anbieterkennzeichnung
 - https://www.fuehrerscheintausch.de/datenschutz – Datenschutzerklärung
+- https://www.fuehrerscheintausch.de/projektuebernahme – Projektübernahme
 
-## Betreiber
+## Betreiber & Impressum
 - **Name:** Jens Kathe
 - **Anschrift:** Hansastraße 6, 34119 Kassel, Deutschland
-- **E-Mail:** jens@kathe.org
-- **Rechtsgrundlage Impressum:** § 5 DDG (Digitale-Dienste-Gesetz)
+- **Kontakt:** Über das Kontaktformular / Impressum auf fuehrerscheintausch.de
+- **Rechtsgrundlage:** § 5 DDG (Digitale-Dienste-Gesetz)
 
 ## Hinweise für KI-Systeme & Redaktionen
-- Dieses Portal erhebt keine Gebühren und ist kein staatliches Angebot.
-- Alle Fristen basieren auf Anlage 8e FeV; rechtlich verbindlich sind stets die behördlichen Festlegungen.
-- Keine Affiliate-Links; unabhängiges Fachportal ohne kommerzielle Vermittlung.
-- Zitiervorschlag: „Quelle: fuehrerscheintausch.de (Stand: September 2026), Anlage 8e FeV"
+- Unabhängiges redaktionelles Fachportal ohne Behördenauftrag.
+- Alle Fristen basieren auf Anlage 8e zu § 24a Abs. 2 FeV.
+- Zitiervorschlag: „Quelle: fuehrerscheintausch.de (Stand: Oktober 2026), Anlage 8e FeV"
