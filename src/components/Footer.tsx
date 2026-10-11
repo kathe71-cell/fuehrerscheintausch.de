@@ -132,9 +132,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             <div className="mt-8 p-4 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-300">
               <span className="font-bold text-white block mb-1">Projektübernahme</span>
               <p className="mb-2">Interesse an der Übernahme von fuehrerscheintausch.de inklusive Projekt?</p>
-              <a href="/projektuebernahme" className="text-blue-400 hover:text-blue-300 font-medium">
-                Mehr erfahren &rarr;
-              </a>
+              <button
+                onClick={() => navigate('/projektuebernahme')}
+                className="text-amber-400 hover:text-amber-300 font-semibold cursor-pointer inline-flex items-center gap-1 transition-colors"
+              >
+                <span>Mehr erfahren &rarr;</span>
+              </button>
             </div>
 
 </footer>

@@ -89,7 +89,7 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
 
       <main className="flex-1">
         {currentPath === '/projektuebernahme' ? (
-          <ProjektuebernahmePage />
+          <ProjektuebernahmePage navigate={navigate} />
         ) : currentPath === '/impressum' ? (
           <Impressum navigate={navigate} />
         ) : currentPath === '/datenschutz' ? (
@@ -219,7 +219,7 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
                   </button>
                 </div>
                 <div className="bg-slate-950 rounded-lg p-3 text-xs font-mono text-slate-300 overflow-x-auto border border-slate-800/80">
-                  <code>{`<iframe src="https://fuehrerscheintausch.de/rechner-embed" width="100%" height="680" style="border:none; border-radius:12px;" title="Führerschein Fristenrechner"></iframe>\n<p style="font-size:12px; color:#64748b; text-align:center;">Bereitgestellt von <a href="https://fuehrerscheintausch.de" target="_blank" rel="noopener">fuehrerscheintausch.de</a></p>`}</code>
+                  <code>{`<iframe src="https://www.fuehrerscheintausch.de/rechner-embed" width="100%" height="680" style="border:none; border-radius:12px;" title="Führerschein Fristenrechner"></iframe>\n<p style="font-size:12px; color:#64748b; text-align:center;">Bereitgestellt von <a href="https://www.fuehrerscheintausch.de" target="_blank" rel="noopener">fuehrerscheintausch.de</a></p>`}</code>
                 </div>
               </div>
 
@@ -246,7 +246,7 @@ export const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
                   </div>
                   <div>
                     <h4 className="text-base font-bold text-slate-900">Fachredaktion fuehrerscheintausch.de</h4>
-                    <p className="text-xs text-slate-500">Rechtsstand: September 2026 • Prüfstand: Anlage 8e zu § 24a Abs. 2 Fahrerlaubnis-Verordnung (FeV)</p>
+                    <p className="text-xs text-slate-500">Rechtsstand: Oktober 2026 • Prüfstand: Anlage 8e zu § 24a Abs. 2 Fahrerlaubnis-Verordnung (FeV)</p>
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-600">

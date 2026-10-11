@@ -127,7 +127,7 @@ export function getPapierStaffeln(): PapierStaffel[] {
   const dates = RAW_PAPIER_STAFFELN.map(s => s.fristDate);
   return RAW_PAPIER_STAFFELN.map(s => ({
     ...s,
-    status: calculateStaffelStatus(s.fristDate, dates)
+    status: s.geburtsjahr === 'Vor 1953' ? 'zukunft' : calculateStaffelStatus(s.fristDate, dates)
   }));
 }
 

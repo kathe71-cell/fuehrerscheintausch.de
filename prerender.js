@@ -28,6 +28,11 @@ const routesToPrerender = [
     url: '/datenschutz',
     title: 'Datenschutzerklärung | fuehrerscheintausch.de',
     desc: 'Informationen zur Verarbeitung personenbezogener Daten auf fuehrerscheintausch.de gemäß DSGVO.'
+  },
+  {
+    url: '/projektuebernahme',
+    title: 'Projektübernahme | fuehrerscheintausch.de',
+    desc: 'Informationen und Kontakt zur Übernahme des Projekts und der Domain fuehrerscheintausch.de.'
   }
 ];
 

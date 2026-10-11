@@ -17,7 +17,7 @@ export const RechnerEmbed: React.FC = () => {
         <div className="flex items-center gap-1">
           <span>Bereitgestellt von</span>
           <a
-            href="https://fuehrerscheintausch.de"
+            href="https://www.fuehrerscheintausch.de"
             target="_blank"
             rel="noopener"
             className="text-amber-800 font-bold hover:underline inline-flex items-center gap-0.5"
