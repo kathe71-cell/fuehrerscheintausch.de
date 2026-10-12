@@ -50,59 +50,69 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => document.getElementById('rechner')?.scrollIntoView({ behavior: 'smooth' }), 50);
+                <a
+                  href="/rechner"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/rechner');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-amber-400 transition-colors text-left"
+                  className="hover:text-amber-400 transition-colors text-left inline-block"
                 >
                   Fristen-Rechner 2026
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => document.getElementById('stufenplan')?.scrollIntoView({ behavior: 'smooth' }), 50);
+                <a
+                  href="/stufenplan"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/stufenplan');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-amber-400 transition-colors text-left"
+                  className="hover:text-amber-400 transition-colors text-left inline-block"
                 >
                   Stufenplan nach FeV
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => document.getElementById('checkliste')?.scrollIntoView({ behavior: 'smooth' }), 50);
+                <a
+                  href="/checkliste"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/checkliste');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-amber-400 transition-colors text-left"
+                  className="hover:text-amber-400 transition-colors text-left inline-block"
                 >
                   Unterlagen-Checkliste
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => document.getElementById('kosten')?.scrollIntoView({ behavior: 'smooth' }), 50);
+                <a
+                  href="/kosten"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/kosten');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-amber-400 transition-colors text-left"
+                  className="hover:text-amber-400 transition-colors text-left inline-block"
                 >
                   Kosten & Gebühren
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }), 50);
+                <a
+                  href="/faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/faq');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-amber-400 transition-colors text-left"
+                  className="hover:text-amber-400 transition-colors text-left inline-block"
                 >
                   Häufige Fragen (FAQ)
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -112,15 +122,31 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© {new Date().getFullYear()} fuehrerscheintausch.de • Alle Rechte vorbehalten.</p>
           <div className="flex items-center gap-4">
-            <button onClick={() => navigate('/impressum')} className="hover:text-white transition-colors">
+            <a
+              href="/impressum"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/impressum');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors"
+            >
               Impressum
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => navigate('/datenschutz')} className="hover:text-white transition-colors">
+            <a
+              href="/datenschutz"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/datenschutz');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors"
+            >
               Datenschutz
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => navigate('/analytics')} className="hover:text-amber-400 text-slate-300 font-semibold transition-colors inline-flex items-center gap-1">
+            <button onClick={() => navigate('/analytics')} className="hover:text-amber-400 text-slate-300 font-semibold transition-colors inline-flex items-center gap-1 cursor-pointer">
               <span>▲</span> Analytics Hub
             </button>
             <span>•</span>
@@ -129,16 +155,21 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         </div>
       </div>
     
-            <div className="mt-8 p-4 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-300">
-              <span className="font-bold text-white block mb-1">Projektübernahme</span>
-              <p className="mb-2">Interesse an der Übernahme von fuehrerscheintausch.de inklusive Projekt?</p>
-              <button
-                onClick={() => navigate('/projektuebernahme')}
-                className="text-amber-400 hover:text-amber-300 font-semibold cursor-pointer inline-flex items-center gap-1 transition-colors"
-              >
-                <span>Mehr erfahren &rarr;</span>
-              </button>
-            </div>
+      <div className="mt-8 p-4 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-300">
+        <span className="font-bold text-white block mb-1">Projektübernahme</span>
+        <p className="mb-2">Interesse an der Übernahme von fuehrerscheintausch.de inklusive Projekt?</p>
+        <a
+          href="/projektuebernahme"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate('/projektuebernahme');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="text-amber-400 hover:text-amber-300 font-semibold cursor-pointer inline-flex items-center gap-1 transition-colors"
+        >
+          <span>Mehr erfahren &rarr;</span>
+        </a>
+      </div>
 
 </footer>
   );

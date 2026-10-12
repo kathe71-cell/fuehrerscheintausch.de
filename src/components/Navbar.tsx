@@ -9,7 +9,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNav = (path: string) => {
+  const handleNav = (path: string, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     setMobileMenuOpen(false);
     navigate(path);
   };
@@ -27,8 +28,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 relative">
           {/* Logo */}
-          <button 
-            onClick={() => handleNav('/')}
+          <a 
+            href="/"
+            onClick={(e) => handleNav('/', e)}
             className="flex items-center gap-2.5 text-left group focus:outline-none shrink-0 cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-amber-400 font-black shadow-sm group-hover:scale-105 transition-transform">
@@ -40,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
               </div>
               <p className="text-[11px] text-slate-500 font-medium tracking-wide uppercase">Gesetzlicher Pflichtumtausch</p>
             </div>
-          </button>
+          </a>
 
           {/* Desktop Nav with Dedicated URLs */}
           <nav className="hidden lg:flex items-center gap-1">
@@ -48,9 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
               const Icon = item.icon;
               const isActive = currentPath === item.path;
               return (
-                <button
+                <a
                   key={item.path}
-                  onClick={() => handleNav(item.path)}
+                  href={item.path}
+                  onClick={(e) => handleNav(item.path, e)}
                   className={`px-3 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-amber-100/70 text-amber-950 font-bold border border-amber-300/60'
@@ -59,67 +62,40 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-amber-700' : 'text-slate-500'}`} />
                   <span>{item.label}</span>
-                </button>
+                </a>
               );
             })}
 
             <div className="h-5 w-px bg-slate-200 mx-2" />
 
-            <button
-              onClick={() => handleNav('/rechner')}
+            <a
+              href="/rechner"
+              onClick={(e) => handleNav('/rechner', e)}
               className="ml-1 px-4 py-2 text-sm font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-500 rounded-lg shadow-sm hover:shadow transition-all cursor-pointer"
             >
               Frist jetzt prüfen
-            </button>
+            </a>
           </nav>
 
           {/* Tablet Nav (compact) */}
           <nav className="hidden md:flex lg:hidden items-center gap-1">
-            <button
-              onClick={() => handleNav('/rechner')}
-              className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
-                currentPath === '/rechner' ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <Clock className="w-3.5 h-3.5 text-amber-600" />
-              <span>Rechner</span>
-            </button>
-            <button
-              onClick={() => handleNav('/stufenplan')}
-              className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
-                currentPath === '/stufenplan' ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <Calendar className="w-3.5 h-3.5 text-slate-500" />
-              <span>Stufenplan</span>
-            </button>
-            <button
-              onClick={() => handleNav('/checkliste')}
-              className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
-                currentPath === '/checkliste' ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <FileCheck className="w-3.5 h-3.5 text-slate-500" />
-              <span>Checkliste</span>
-            </button>
-            <button
-              onClick={() => handleNav('/kosten')}
-              className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
-                currentPath === '/kosten' ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <Coins className="w-3.5 h-3.5 text-slate-500" />
-              <span>Kosten</span>
-            </button>
-            <button
-              onClick={() => handleNav('/faq')}
-              className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
-                currentPath === '/faq' ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <HelpCircle className="w-3.5 h-3.5 text-slate-500" />
-              <span>FAQ</span>
-            </button>
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = currentPath === item.path;
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  onClick={(e) => handleNav(item.path, e)}
+                  className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1 ${
+                    isActive ? 'bg-amber-100 text-amber-950 font-bold' : 'text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-700' : 'text-slate-500'}`} />
+                  <span>{item.label.replace('Fristen-', '')}</span>
+                </a>
+              );
+            })}
           </nav>
 
           {/* Mobile menu button */}
@@ -142,9 +118,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
             const Icon = item.icon;
             const isActive = currentPath === item.path;
             return (
-              <button
+              <a
                 key={item.path}
-                onClick={() => handleNav(item.path)}
+                href={item.path}
+                onClick={(e) => handleNav(item.path, e)}
                 className={`w-full text-left px-3 py-2.5 text-base font-semibold rounded-lg flex items-center gap-2.5 cursor-pointer ${
                   isActive
                     ? 'bg-amber-50 text-amber-950 font-bold border border-amber-300'
@@ -153,16 +130,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
               >
                 <Icon className={`w-5 h-5 ${isActive ? 'text-amber-700' : 'text-slate-500'}`} />
                 <span>{item.label}</span>
-              </button>
+              </a>
             );
           })}
           <div className="pt-2">
-            <button
-              onClick={() => handleNav('/rechner')}
-              className="w-full py-3 text-center text-sm font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-500 rounded-lg shadow-sm cursor-pointer"
+            <a
+              href="/rechner"
+              onClick={(e) => handleNav('/rechner', e)}
+              className="block w-full py-3 text-center text-sm font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-500 rounded-lg shadow-sm cursor-pointer"
             >
               Frist jetzt prüfen
-            </button>
+            </a>
           </div>
         </div>
       )}
